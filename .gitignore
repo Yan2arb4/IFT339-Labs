@@ -1,32 +1,70 @@
-# Compiled Object files, Libraries, and Executables
-*.o
+# Compiled object files
 *.obj
-*.gch
+*.o
+*.lo
+*.slo
+
+# Precompiled headers
 *.pch
-*.a
+*.gch
+
+# Compiled static libraries
 *.lib
-*.so
+*.a
+
+# Compiled dynamic libraries
 *.dll
+*.so
 *.dylib
+
+# Executables
 *.exe
 *.out
 *.app
 
-# Build Directories
-build/
-out/
+# Debug and release directories
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+[Bb]uild/
+[Bb]in/
+[Oo]bj/
 
-# IDE and Editor Specific Files
+# Visual Studio cache and settings
 .vs/
-.vscode/
-.idea/
-*.user
+*.vcxproj.user
 *.suo
+*.user
+*.userosscache
+*.sln.docstates
 
-# Operating System Specific Files
-.DS_Store
-Thumbs.db
+# CMake build folders (if used with VS)
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
 
-# Other temporary or generated files
+# Other files to ignore
 *.log
+*.tlog
+*.ipch
+*.pdb
+*.ilk
+
+# Profiling files
+*.pgc
+*.pgd
+*.rsp
+
+# Crash dumps
+*.dmp
+
+# Backup and autosave files
+*~
+*.bak
+*.swp
 *.tmp
+
+# Ignore generated files from testing
+test-output/
