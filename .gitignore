@@ -1,0 +1,32 @@
+# Compiled Object files, Libraries, and Executables
+*.o
+*.obj
+*.gch
+*.pch
+*.a
+*.lib
+*.so
+*.dll
+*.dylib
+*.exe
+*.out
+*.app
+
+# Build Directories
+build/
+out/
+
+# IDE and Editor Specific Files
+.vs/
+.vscode/
+.idea/
+*.user
+*.suo
+
+# Operating System Specific Files
+.DS_Store
+Thumbs.db
+
+# Other temporary or generated files
+*.log
+*.tmp
