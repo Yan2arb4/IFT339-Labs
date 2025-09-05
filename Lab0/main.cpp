@@ -30,6 +30,10 @@ int main()
     entrerInfosTirage(nbChiffresTotaux, nbChiffresAChoisir);
     nbCombinaisons = calculeNbCombinaisons(nbChiffresTotaux, nbChiffresAChoisir);
 
+    //long int testing = factorielle(4); 
+
+    //cout << "\nResult of factioral : " << testing << "\n";
+
     cout << fixed << showpoint << setprecision(4);
     cout << "\nVotre chance de gagner la lotterie est de " << "une chance sur " << nbCombinaisons << ".\n";
     cout << "Ce qui equivaut a une probabilite de " << (1.0 / nbCombinaisons) << "\n";
