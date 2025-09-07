@@ -1,25 +1,29 @@
+#include <cassert>
 
 long int factorielle(int num) {
-	if (num == 0)
-		return 1;
 
-	int count = num - 1;
+	assert(num >= 0);
+	assert(num <= 12);
 
-	while (count > 1) {		//factioral formula ->	n * (n - 1)!
-		num *= count;
-		count--;
+	if (num == 0) return 1;
+
+	long int result = 1;
+	for (int i = 2; i <= num; ++i) {
+		result *= i;
 	}
 
-	return num;
+	return result;
 }
 /*
 * Amount of combinations formula ->		n!/(k!(n-k)!
 */
 long int calculeNbCombinaisons(int nbChiffresTotaux, int nbChiffresAChoisir) {
-	
-	int n = factorielle(nbChiffresTotaux);
-	int k = factorielle(nbChiffresAChoisir);
-	int sub = factorielle(nbChiffresTotaux - nbChiffresAChoisir);
+	assert(nbChiffresTotaux >= 1 && nbChiffresTotaux <= 12);
+	assert(nbChiffresAChoisir >= 1 && nbChiffresAChoisir <= nbChiffresTotaux);
+
+	long int n = factorielle(nbChiffresTotaux);
+	long int k = factorielle(nbChiffresAChoisir);
+	long int sub = factorielle(nbChiffresTotaux - nbChiffresAChoisir);
 	
 	long int nbCombinations = n / (k * sub);
 

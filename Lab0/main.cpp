@@ -13,6 +13,7 @@
 #include <iostream>
 #include <iomanip>
 #include "modules.h"
+#include "cassert"
 
 using namespace std;
 
@@ -29,10 +30,6 @@ int main()
     cout << "Ce programme vous donne la probabilite de gagner la \"loto UdeS\". \n";
     entrerInfosTirage(nbChiffresTotaux, nbChiffresAChoisir);
     nbCombinaisons = calculeNbCombinaisons(nbChiffresTotaux, nbChiffresAChoisir);
-
-    //long int testing = factorielle(4); 
-
-    //cout << "\nResult of factioral : " << testing << "\n";
 
     cout << fixed << showpoint << setprecision(4);
     cout << "\nVotre chance de gagner la lotterie est de " << "une chance sur " << nbCombinaisons << ".\n";
@@ -56,7 +53,15 @@ void entrerInfosTirage(int& s_nbChiffres, int& s_nbChiffresAChoisir)
 {
     cout << endl << "Parmi combien de chiffres (1 à 12) devez-vous choisir? ";
     cin >> s_nbChiffres;
+    while (s_nbChiffres > 12 || s_nbChiffres < 1) {
+        cout << endl << "Veuillez choisir un chiffre entre 1 à 12 : ";
+        cin >> s_nbChiffres;
+    }
 
     cout << "Combien de chiffre devez-vous choisir? ";
     cin >> s_nbChiffresAChoisir;
+    while (s_nbChiffresAChoisir <= 0 || s_nbChiffres < s_nbChiffresAChoisir) {
+        cout << endl << "Veuillez choisir un chiffre plus grand que 0 et moins haut que le nombre de chiffres choisis : ";
+        cin >> s_nbChiffresAChoisir;
+    }
 }
