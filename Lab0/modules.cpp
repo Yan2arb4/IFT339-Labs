@@ -1,9 +1,7 @@
 #include <cassert>
 
 long int factorielle(int num) {
-
 	assert(num >= 0);
-	assert(num <= 12);
 
 	if (num == 0) return 1;
 
@@ -14,11 +12,12 @@ long int factorielle(int num) {
 
 	return result;
 }
+
 /*
 * Amount of combinations formula ->		n!/(k!(n-k)!
 */
-long int calculeNbCombinaisons(int nbChiffresTotaux, int nbChiffresAChoisir) {
-	assert(nbChiffresTotaux >= 1 && nbChiffresTotaux <= 12);
+long int calculeNbCombinaisons(int& nbChiffresTotaux, int& nbChiffresAChoisir) {
+	assert(nbChiffresTotaux >= 1);
 	assert(nbChiffresAChoisir >= 1 && nbChiffresAChoisir <= nbChiffresTotaux);
 
 	long int n = factorielle(nbChiffresTotaux);

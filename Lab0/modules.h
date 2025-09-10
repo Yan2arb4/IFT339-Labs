@@ -27,7 +27,7 @@
 
  ***************************************************************** */
 
-long int calculeNbCombinaisons(int, int);
+long int calculeNbCombinaisons(int&, int&);
 long int factorielle(int);
 
 /* *****************************************************************
