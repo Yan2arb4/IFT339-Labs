@@ -2,10 +2,17 @@
 //
 
 #include <iostream>
+#include "TableauFixe.h"
+#include <string>
 
 int main()
 {
-    std::cout << "Hello World!\n";
+    TableauFixe<int, 10> tab;
+    tab[0] = 1;
+    tab[1] = 2;
+    bool allo = tab.estVide();
+
+    std::cout << "Hello World!\n" << tab.premier();
 }
 
 // Run program: Ctrl + F5 or Debug > Start Without Debugging menu
