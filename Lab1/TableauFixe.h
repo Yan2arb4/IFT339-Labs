@@ -25,7 +25,8 @@ public:
     T& premier();
     const T& premier() const;
 
-    T& dernier();    const T& dernier() const;
+    T& dernier();
+    const T& dernier() const;
 
     void remplis(const T& value);
     void echange(TableauFixe& tableau_fixe);

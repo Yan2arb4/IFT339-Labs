@@ -1,65 +1,27 @@
+// Lab1.cpp : This file contains the 'main' function. Program execution begins and ends there.
+//
+
 #include <iostream>
 #include "TableauFixe.h"
-
-#include <array>
-
-typedef int Object; // vous devriez tester un type plus complexe...
-
-template<typename T, size_t N>
-void afficherArrayIndex(const TableauFixe<T, N>& a)
-{
-    std::cout << "======= Affichage d'un TableauFixe<T, N> avec un index (operator[]) ==========" << std::endl;
-    for (size_t i = 0; i < N; ++i)
-    {
-        std::cout << "(" << i << ") - " << a[i] << std::endl;
-    }
-    std::cout << "======= Fin de l'affichage d'un TableauFixe<T, N> ==========" << std::endl;
-}
-
-
-void testArray()
-{
-    TableauFixe<Object, 5> aObj;
-
-    aObj.remplis(Object(4));
-    std::cout << "Affichage d'un TableauFixe<Object, 5> rempli par la methode remplis avec un Object(4) :" << std::endl;
-    afficherArrayIndex(aObj);
-
-    std::cout << "Changement de la valeur a la position 3 avec la methode element avec un Object(10) :" << std::endl;
-    aObj.element(3) = Object(10);
-    afficherArrayIndex(aObj);
-
-    std::cout << "Changement de la valeur a la position 0 avec l'operator [] avec un Object(15) et changement de dernier() par premier() :" << std::endl;
-    aObj[0] = Object(15);
-    aObj.dernier() = aObj.premier();
-    afficherArrayIndex(aObj);
-
-    // Fusion
-    std::cout << "Creation d'un TableauFixe<T, 14> rempli par des Object(2)" << std::endl;
-    TableauFixe<Object, 14> bObj;
-    bObj.remplis(Object(2));
-    std::cout << "Creation d'un TableauFixe<T, 9> rempli par des Object(6)" << std::endl;
-    TableauFixe<Object, 9> cObj;
-    cObj.remplis(Object(6));
-    afficherArrayIndex(bObj);
-    afficherArrayIndex(cObj);
-    std::cout << "Fusion du TableauFixe<T, 5> et du TableauFixe<T, 9> dans le TableauFixe<T, 14>" << std::endl;
-    bObj = aObj.fusion(cObj);
-    afficherArrayIndex(bObj);
-
-    // Subset
-    std::cout << "sous-ensemble d'un TableauFixe<T, 14> vers un TableauFixe<T, 5> a partir de la position 3" << std::endl;
-    aObj = bObj.sousEnsemble<5>(3);
-    afficherArrayIndex(aObj);
-}
-
+#include <string>
 
 int main()
 {
-    std::cout << " ========= Debut du programmede test ========" << std::endl;
+    TableauFixe<int, 10> tab;
+    tab[0] = 1;
+    tab[1] = 2;
+    bool allo = tab.estVide();
 
-    testArray();
-
-    std::cout << " ========= Fin du programme de test ========" << std::endl;
-
+    std::cout << "Hello World!\n" << tab.premier();
 }
+
+// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
+// Debug program: F5 or Debug > Start Debugging menu
+
+// Tips for Getting Started: 
+//   1. Use the Solution Explorer window to add/manage files
+//   2. Use the Team Explorer window to connect to source control
+//   3. Use the Output window to see build output and other messages
+//   4. Use the Error List window to view errors
+//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
+//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file
