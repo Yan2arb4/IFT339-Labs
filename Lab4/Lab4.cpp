@@ -1,20 +1,87 @@
-// Lab4.cpp : Ce fichier contient la fonction 'main'. L'exécution du programme commence et se termine à cet endroit.
-//
-
+#include "ensemble.h"
 #include <iostream>
 
-int main()
-{
-    std::cout << "Hello World!\n";
+int main() {
+	std::cout << "Test Aucune donn�e";
+
+	ensemble<int> ensembleTest = ensemble<int>();
+
+	afficher(std::cout, ensembleTest);
+
+
+	std::cout << "Test 15 donn�es\n";
+	for (size_t i = 0; i < 15; i++)
+	{
+		ensembleTest.ajoute(i);
+	}
+	ensembleTest.ajoute(5);
+	std::cout << "Ajout d'un doublon, l'ensemble ne devrait pas changer :\n";
+	afficher(std::cout, ensembleTest);
+
+	std::cout << "---------------------------------\n";
+	std::cout << "-----------Test retire-----------\n";
+	std::cout << "---------------------------------\n";
+	ensembleTest.retire(6);
+	afficher(std::cout, ensembleTest);
+	ensembleTest.retire(7);
+	afficher(std::cout, ensembleTest);
+
+	std::cout << "Retrait d'un element inexistant\n";
+	ensembleTest.retire(99);
+	afficher(std::cout, ensembleTest);
+
+	std::cout << "---------------------------------\n";
+	std::cout << "-----------Test trouve-----------\n";
+	std::cout << "---------------------------------\n";
+	std::cout << "\n";
+	std::cout << "Devrait trouve 10\n";
+	ensemble<int>::iterateur it = ensembleTest.trouve(10);
+	std::cout << "Element trouv� : " << *it << "\n";
+	std::cout << "\n";
+
+	std::cout << "Devrait pas trouve alors print l'avant dernier element\n";
+	ensemble<int>::iterateur it6 = ensembleTest.trouve(6);
+	std::cout << "Element trouv� : " << *--it6 << "\n";
+	ensemble<int>::iterateur it7 = ensembleTest.trouve(7);
+	std::cout << "Element trouv� : " << *--it7 << "\n";
+
+
+	std::cout << "---------------------------------------\n";
+	std::cout << "-------Test constructeur copieur-------\n";
+	std::cout << "---------------------------------------\n";
+
+	ensemble<int> ensembleCopie = ensemble<int>(ensembleTest);
+	afficher(std::cout, ensembleCopie);
+
+	std::cout << "On modifie l'original pour s'assurer que la copie ne change pas en ajoutant 67\n";
+
+
+	ensembleTest.ajoute(67);
+
+	std::cout << "L'original \n\n";
+	afficher(std::cout, ensembleTest);
+	std::cout << "La copie \n\n";
+	afficher(std::cout, ensembleCopie);
+
+	std::cout << "---------------------------\n";
+	std::cout << "-------Test borneSup-------\n";
+	std::cout << "---------------------------\n";
+
+	std::cout << "Borne superieur 65 devrait donner 67\n";
+
+	ensemble<int>::iterateur it8 = ensembleTest.borneSup(65);
+	std::cout << "Element trouv� : " << *it8 << "\n";
+
+	std::cout << "Borne superieur 13 devrait donner 14\n\n";
+
+
+	ensemble<int>::iterateur it10 = ensembleTest.borneSup(13);
+	std::cout << "Element trouv� : " << *it10 << "\n";
+
+	std::cout << "Borne superieur 67 devrait donner la fin donc afficher 67\n\n";
+
+	ensemble<int>::iterateur it9 = ensembleTest.borneSup(67);
+	std::cout << "Element trouv� : " << *--it9 << "\n";
+
+
 }
-
-// Exécuter le programme : Ctrl+F5 ou menu Déboguer > Exécuter sans débogage
-// Déboguer le programme : F5 ou menu Déboguer > Démarrer le débogage
-
-// Astuces pour bien démarrer : 
-//   1. Utilisez la fenêtre Explorateur de solutions pour ajouter des fichiers et les gérer.
-//   2. Utilisez la fenêtre Team Explorer pour vous connecter au contrôle de code source.
-//   3. Utilisez la fenêtre Sortie pour voir la sortie de la génération et d'autres messages.
-//   4. Utilisez la fenêtre Liste d'erreurs pour voir les erreurs.
-//   5. Accédez à Projet > Ajouter un nouvel élément pour créer des fichiers de code, ou à Projet > Ajouter un élément existant pour ajouter des fichiers de code existants au projet.
-//   6. Pour rouvrir ce projet plus tard, accédez à Fichier > Ouvrir > Projet et sélectionnez le fichier .sln.
