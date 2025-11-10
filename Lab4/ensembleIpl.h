@@ -5,7 +5,7 @@
 //
 //  Devoir fait par
 //     Coéquipier 1 : Yanéric Roussy
-//     Coéquipier 2 : Alexis Kaddar
+//     Coéquipier 2 : Alexis Kadar
 //
 
 /////////////////////////////////////////////////////////////////
@@ -30,7 +30,15 @@ ensemble<TYPEContenu>::~ensemble()
 template <typename TYPEContenu>
 typename ensemble<TYPEContenu>::iterateur ensemble<TYPEContenu>::trouve(const TYPEContenu& x) const
 {
-    // a completer
+	//cellule* celluleTrouve = borneInf(x);
+	iterateur it = borneInf(x);
+
+	if (it.m_pointeur == m_avant->m_prec[0])    //Si on est à la fin, retourne fin
+		return end();
+	if (*(it.m_pointeur->m_contenu) != x)    //Si l'élément n'est pas égal à x, retourne fin
+		return end();
+
+	return it;
 }
 
 // localise la premiere position ou l'element n'est

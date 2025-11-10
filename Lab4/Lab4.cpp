@@ -13,13 +13,27 @@ int main() {
 	}
 	afficher(cout, ensembleTest);
 
-	std::cout << "---------------------------------\n";
-	std::cout << "-----------Test enleve-----------\n";
-	std::cout << "---------------------------------\n";
+	cout << "---------------------------------\n";
+	cout << "-----------Test enleve-----------\n";
+	cout << "---------------------------------\n\n";
 	//Retourne second vrai element de l'ensemble. 
-	ensemble<int>::iterateur it = ensembleTest.second();
-	ensembleTest.enleve(it);
+	ensemble<int>::iterateur itEnleve = ensembleTest.second();
+	ensembleTest.enleve(itEnleve);
 	afficher(cout, ensembleTest);
+
+	cout << "---------------------------------\n";
+	cout << "-----------Test trouve-----------\n";
+	cout << "---------------------------------\n";
+	cout << "\nDevrait trouve 8\n";
+	ensemble<int>::iterateur it8 = ensembleTest.trouve(8);
+	cout << "Element trouve : " << *it8 << "\n\n";
+	cout << "\nDevrait trouve 3\n";
+	ensemble<int>::iterateur it3 = ensembleTest.trouve(3);
+	cout << "Element trouve : " << *it3 << "\n\n";
+	cout << "\nDevrait trouve 10\n";
+	ensemble<int>::iterateur it10 = ensembleTest.trouve(10);
+	cout << "Element trouve : " << *it10 << "\n\n";
+
 	return 0;
 }
 
