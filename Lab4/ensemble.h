@@ -55,6 +55,7 @@ public:
 
     iterateur begin()const;
     iterateur end()const;
+	iterateur second()const; //REMOVE THIS LATER PLS
     
 private:
     struct cellule
@@ -377,6 +378,13 @@ template <typename TYPEContenu>
 typename ensemble<TYPEContenu>::iterateur ensemble<TYPEContenu>::begin()const
 {
     return iterateur(m_avant->m_suiv[0]);
+}
+
+/*REMOVE THIS LATER PLS*/
+template <typename TYPEContenu>
+typename ensemble<TYPEContenu>::iterateur ensemble<TYPEContenu>::second()const
+{
+    return iterateur(m_avant->m_suiv[0]->m_suiv[0]);
 }
 
 template <typename TYPEContenu>
