@@ -74,9 +74,12 @@ typename ensemble<TYPEContenu>::iterateur ensemble<TYPEContenu>::borneSup(const 
 template <typename TYPEContenu>
 size_t ensemble<TYPEContenu>::retire(const TYPEContenu& val)
 {
-    // a completer
-	cellule* c = m_avant;
+	iterateur it = trouve(val);
 
+    if(it.m_pointeur == m_avant->m_prec[0])
+		return 0;
+
+	enleve(it);
 }
 
 // elimine de l'ensemble l'element en position it
