@@ -4,20 +4,22 @@
 using namespace std;
 
 int main() {
-	cout << "Debug fonction enleve d'ensemble\n";
 
 	ensemble<int> ensembleTest = ensemble<int>();
 	for (size_t i = 1; i <= 10; i++)
 	{
 		ensembleTest.ajoute(i);
 	}
-	afficher(cout, ensembleTest);
 
 	cout << "---------------------------------\n";
 	cout << "-----------Test enleve-----------\n";
 	cout << "---------------------------------\n\n";
 	//Retourne second vrai element de l'ensemble. 
 	ensemble<int>::iterateur itEnleve = ensembleTest.second();
+	cout << "Enleve le 2e element (devrait etre 2)\n\n";
+	cout << "Avant le retrait :\n";
+	afficher(cout, ensembleTest);
+	cout << "Apres le retrait :\n";
 	ensembleTest.enleve(itEnleve);
 	afficher(cout, ensembleTest);
 
@@ -33,6 +35,16 @@ int main() {
 	cout << "\nDevrait trouve 10\n";
 	ensemble<int>::iterateur it10 = ensembleTest.trouve(10);
 	cout << "Element trouve : " << *it10 << "\n\n";
+
+	cout << "---------------------------------\n";
+	cout << "-----------Test retire-----------\n";
+	cout << "---------------------------------\n";
+	cout << "Enleve l'element a valeur 5\n\n";
+	cout << "Avant le retrait :\n";
+	afficher(cout, ensembleTest);
+	cout << "Apres le retrait :\n";
+	ensembleTest.retire(5);
+	afficher(cout, ensembleTest);
 
 	return 0;
 }
