@@ -1,6 +1,29 @@
 #include "ensemble.h"
 #include <iostream>
 
+using namespace std;
+
+int main() {
+	cout << "Debug fonction enleve d'ensemble\n";
+
+	ensemble<int> ensembleTest = ensemble<int>();
+	for (size_t i = 1; i <= 10; i++)
+	{
+		ensembleTest.ajoute(i);
+	}
+	afficher(cout, ensembleTest);
+
+	std::cout << "---------------------------------\n";
+	std::cout << "-----------Test enleve-----------\n";
+	std::cout << "---------------------------------\n";
+	//Retourne second vrai element de l'ensemble. 
+	ensemble<int>::iterateur it = ensembleTest.second();
+	ensembleTest.enleve(it);
+	afficher(cout, ensembleTest);
+	return 0;
+}
+
+/*
 int main() {
 	std::cout << "Test Aucune donnée";
 
@@ -85,3 +108,4 @@ int main() {
 
 
 }
+*/

@@ -57,6 +57,7 @@ template <typename TYPEContenu>
 typename ensemble<TYPEContenu>::iterateur ensemble<TYPEContenu>::borneSup(const TYPEContenu& x) const
 {
     // a completer
+
 }
 
 /////////////////////////////////////////////////////////////////
@@ -66,12 +67,42 @@ template <typename TYPEContenu>
 size_t ensemble<TYPEContenu>::retire(const TYPEContenu& val)
 {
     // a completer
+	cellule* c = m_avant;
+
 }
 
 // elimine de l'ensemble l'element en position it
 
 template <typename TYPEContenu>
 typename ensemble<TYPEContenu>::iterateur ensemble<TYPEContenu>::enleve(iterateur it)
-{
-    // a completer
+  {
+   	cellule* c = it.m_pointeur;
+
+    if (c == m_avant || c == m_avant->m_prec[0])
+        return it;    
+
+    cellule* apres = c->m_suiv[0];
+
+	//On veut l'hauteur de la cellule à enlever
+	size_t hauteur = c->m_suiv.size();
+
+	//On reconnecte les pointeurs des cellules précédentes et suivantes
+    for (size_t i = 0; i < hauteur; i++) {
+		c->m_prec[i]->m_suiv[i] = c->m_suiv[i];
+		c->m_suiv[i]->m_prec[i] = c->m_prec[i];
+    }
+
+    delete c;
+	c = nullptr;
+	--m_taille;
+
+	//On enlève les niveaux vides s'il y a lieu
+    while (m_avant->m_suiv.size() > 1 && 
+		m_avant->m_suiv.back() == m_avant->m_prec[0]) //si la dernière couche est vide
+    {
+		m_avant->m_suiv.pop_back();
+		m_avant->m_prec[0]->m_prec.pop_back();
+    }
+
+	return iterateur(apres);
 }
