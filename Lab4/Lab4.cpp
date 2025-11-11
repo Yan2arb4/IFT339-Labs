@@ -11,6 +11,21 @@ int main() {
 		ensembleTest.ajoute(i);
 	}
 
+	cout << "Ensemble de base : \n";
+	afficher(cout, ensembleTest);
+
+	cout << "---------------------------------\n";
+	cout << "-------Test constructeur---------\n";
+	cout << "---------------------------------\n\n";
+
+	cout << "Ensemble de base : \n";
+	afficher(cout, ensembleTest);
+
+	cout << "On appel le constructeur par copie pour ensembleCopie\n";
+	ensemble<int> ensembleCopie = ensemble<int>(ensembleTest);
+	cout << "Contenu ensembleCopie : \n";
+	afficher(cout, ensembleCopie);
+
 	cout << "---------------------------------\n";
 	cout << "-----------Test enleve-----------\n";
 	cout << "---------------------------------\n\n";

@@ -15,7 +15,10 @@ template <typename TYPEContenu>
 ensemble<TYPEContenu>::ensemble(const ensemble<TYPEContenu>& src)
     : ensemble()
 {
-    // a completer
+    for(iterateur it = src.begin(); it != src.end(); it++)
+    {
+        ajoute(*it);
+    }
 }
 
 template <typename TYPEContenu>
