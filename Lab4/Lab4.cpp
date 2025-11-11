@@ -73,6 +73,17 @@ int main() {
 
 
 	cout << "---------------------------------\n";
+	cout << "----------Test borneSup----------\n";
+	cout << "---------------------------------\n";
+	cout << "\nTest borneSup(8). Devrait trouve 9\n";
+	ensemble<int>::iterateur itBorneSup9 = ensembleTest.borneSup(8);
+	cout << "Element trouve : " << *itBorneSup9 << "\n\n";
+	cout << "\nTest borneSup(2). Devrait trouve 3\n";
+	ensemble<int>::iterateur itBorneSup2 = ensembleTest.borneSup(2);
+	cout << "Element trouve : " << *itBorneSup2 << "\n\n";
+
+
+	cout << "---------------------------------\n";
 	cout << "-----------Test retire-----------\n";
 	cout << "---------------------------------\n";
 	cout << "Enleve l'element a valeur 5\n\n";

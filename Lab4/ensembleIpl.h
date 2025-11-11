@@ -62,21 +62,48 @@ typename ensemble<TYPEContenu>::iterateur ensemble<TYPEContenu>::borneInf(const 
    cellule* c = m_avant;  
    size_t h = m_avant->m_suiv.size();  
 
-   for (size_t i = h; i > 0; --i) {  
+   for (size_t i = h; i > 0; i--) {  
        while (c->m_suiv[i - 1] != m_avant->m_prec[0] && 
                 *(c->m_suiv[i - 1]->m_contenu) < t) 
        {  
            c = c->m_suiv[i - 1];  
        }  
-   }  
+   }
+
+   if (c->m_suiv[0] == m_avant->m_prec[0])
+       return end();
+
    return iterateur(c->m_suiv[0]);
 }
 
 template <typename TYPEContenu>
 typename ensemble<TYPEContenu>::iterateur ensemble<TYPEContenu>::borneSup(const TYPEContenu& x) const
 {
-    // a completer
+    cellule* c = m_avant;
+    size_t h = m_avant->m_suiv.size();
 
+    for (size_t i = h; i > 0; i--) {
+        while (c->m_suiv[i - 1] != m_avant->m_prec[0] &&
+            *(c->m_suiv[i - 1]->m_contenu) < x)
+        {
+            c = c->m_suiv[i - 1];
+        }
+    }
+    //En ce moment c est le candidat >= t
+    c = c->m_suiv[0];
+
+    if (c == m_avant->m_prec[0])//Si c est la fin on retourne
+        return end();
+
+    if (*(c->m_contenu) > x)    //Si c est déjà plus grand que t
+        return iterateur(c);
+
+    c = c->m_suiv[0];
+
+    if (c == m_avant->m_prec[0])//Si le prochain est la fin, retourne fin.
+        return end();
+
+    return iterateur(c);
 }
 
 /////////////////////////////////////////////////////////////////
