@@ -27,8 +27,8 @@ ensemble<TYPEContenu>::~ensemble()
     cellule* c = m_avant;
     while (c != nullptr)
     {
-        cellule* apres = nullptr;
-        if (!c->m_suiv.empty()) 
+        cellule* apres = nullptr;       
+        if (!c->m_suiv.empty())         //On garde le prochain noeud s'il y en a un
             apres = c->m_suiv[0];
         delete c;
         c = apres;
@@ -43,7 +43,6 @@ ensemble<TYPEContenu>::~ensemble()
 template <typename TYPEContenu>
 typename ensemble<TYPEContenu>::iterateur ensemble<TYPEContenu>::trouve(const TYPEContenu& x) const
 {
-	//cellule* celluleTrouve = borneInf(x);
 	iterateur it = borneInf(x);
 
 	if (it.m_pointeur == m_avant->m_prec[0])    //Si on est à la fin, retourne fin
@@ -57,21 +56,20 @@ typename ensemble<TYPEContenu>::iterateur ensemble<TYPEContenu>::trouve(const TY
 // localise la premiere position ou l'element n'est
 // pas plus petit que celui recu en parametre
 
-template <typename TYPEContenu>
-typename ensemble<TYPEContenu>::iterateur ensemble<TYPEContenu>::borneInf(const TYPEContenu& t) const
-{
+template <typename TYPEContenu>  
+typename ensemble<TYPEContenu>::iterateur ensemble<TYPEContenu>::borneInf(const TYPEContenu& t) const  
+{  
+   cellule* c = m_avant;  
+   size_t h = m_avant->m_suiv.size();  
 
-    // code fonctionnel mais non optimal. a remplacer
-
-    cellule *c = m_avant;
-    cellule *apres = m_avant->m_prec[0];
-    while (c->m_suiv[0] != apres)
-        if (*c->m_suiv[0]->m_contenu < t)
-            c = c->m_suiv[0];
-        else
-            break;
-    return iterateur(c->m_suiv[0]);
-    
+   for (size_t i = h; i > 0; --i) {  
+       while (c->m_suiv[i - 1] != m_avant->m_prec[0] && 
+                *(c->m_suiv[i - 1]->m_contenu) < t) 
+       {  
+           c = c->m_suiv[i - 1];  
+       }  
+   }  
+   return iterateur(c->m_suiv[0]);
 }
 
 template <typename TYPEContenu>
