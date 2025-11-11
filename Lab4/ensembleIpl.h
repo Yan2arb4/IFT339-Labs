@@ -24,7 +24,17 @@ ensemble<TYPEContenu>::ensemble(const ensemble<TYPEContenu>& src)
 template <typename TYPEContenu>
 ensemble<TYPEContenu>::~ensemble()
 {
-    // a completer
+    cellule* c = m_avant;
+    while (c != nullptr)
+    {
+        cellule* apres = nullptr;
+        if (!c->m_suiv.empty()) 
+            apres = c->m_suiv[0];
+        delete c;
+        c = apres;
+    }
+    m_avant = nullptr;
+    m_taille = 0;
 }
 
 /////////////////////////////////////////////////////////////////

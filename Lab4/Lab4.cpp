@@ -13,6 +13,8 @@ int main() {
 
 	cout << "Ensemble de base : \n";
 	afficher(cout, ensembleTest);
+	
+
 
 	cout << "---------------------------------\n";
 	cout << "-------Test constructeur---------\n";
@@ -26,6 +28,21 @@ int main() {
 	cout << "Contenu ensembleCopie : \n";
 	afficher(cout, ensembleCopie);
 
+
+
+	cout << "---------------------------------\n";
+	cout << "--------Test destructeur---------\n";
+	cout << "---------------------------------\n\n";
+
+	cout << "EnsembleCopie avant destruction :\n";
+	afficher(cout, ensembleCopie);
+	cout << "EnsembleCopie apres destruction :\n";
+	ensembleCopie.~ensemble();
+	afficher(cout, ensembleCopie);
+	cout << "\n\n";
+	
+
+
 	cout << "---------------------------------\n";
 	cout << "-----------Test enleve-----------\n";
 	cout << "---------------------------------\n\n";
@@ -37,6 +54,8 @@ int main() {
 	cout << "Apres le retrait :\n";
 	ensembleTest.enleve(itEnleve);
 	afficher(cout, ensembleTest);
+
+
 
 	cout << "---------------------------------\n";
 	cout << "-----------Test trouve-----------\n";
@@ -50,6 +69,8 @@ int main() {
 	cout << "\nDevrait trouve 10\n";
 	ensemble<int>::iterateur it10 = ensembleTest.trouve(10);
 	cout << "Element trouve : " << *it10 << "\n\n";
+
+
 
 	cout << "---------------------------------\n";
 	cout << "-----------Test retire-----------\n";
