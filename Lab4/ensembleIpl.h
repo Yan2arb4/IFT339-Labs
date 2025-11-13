@@ -47,8 +47,8 @@ typename ensemble<TYPEContenu>::iterateur ensemble<TYPEContenu>::trouve(const TY
 
 	if (it.m_pointeur == m_avant->m_prec[0])    //Si on est à la fin, retourne fin
 		return end();
-	if (*(it.m_pointeur->m_contenu) != x)    //Si l'élément n'est pas égal à x, retourne fin
-		return end();
+    if (*(it.m_pointeur->m_contenu) < x || x < *(it.m_pointeur->m_contenu))
+        return end();
 
 	return it;
 }
@@ -79,23 +79,10 @@ typename ensemble<TYPEContenu>::iterateur ensemble<TYPEContenu>::borneInf(const 
 template <typename TYPEContenu>
 typename ensemble<TYPEContenu>::iterateur ensemble<TYPEContenu>::borneSup(const TYPEContenu& x) const
 {
-    cellule* c = m_avant;
-    size_t h = m_avant->m_suiv.size();
-
-    for (size_t i = h; i > 0; i--) {
-        while (c->m_suiv[i - 1] != m_avant->m_prec[0] &&
-            *(c->m_suiv[i - 1]->m_contenu) < x)
-        {
-            c = c->m_suiv[i - 1];
-        }
-    }
     //En ce moment c est le candidat >= t
-    c = c->m_suiv[0];
+    cellule* c = borneInf(x).m_pointeur;
 
-    if (c == m_avant->m_prec[0])//Si c est la fin on retourne
-        return end();
-
-    if (*(c->m_contenu) > x)    //Si c est déjà plus grand que t
+    if (x < *(c->m_contenu))    //Si c est déjà plus grand que t
         return iterateur(c);
 
     c = c->m_suiv[0];
@@ -118,6 +105,7 @@ size_t ensemble<TYPEContenu>::retire(const TYPEContenu& val)
 		return 0;
 
 	enleve(it);
+    return 1;
 }
 
 // elimine de l'ensemble l'element en position it
