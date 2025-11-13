@@ -7,6 +7,22 @@
 //     Coéquipier 1 : Yanéric Roussy
 //     Coéquipier 2 : Alexis Kadar
 //
+/*  Explications des 4 cas prévus dans la fonction insere
+
+    Cas #1 :
+        L'itérateur évalué ne se trouve pas à la bonne place. La valeur doit être insérée
+        plus loin dans l'ensemble.
+
+    Cas #2 :
+        L'insertion se fait au début de l'ensemble (aucun éléments présents).
+
+    Cas #3 :
+        L'insertion se fait entre deux cellules existantes. Donc la valeur se situe entre
+        celle du précédent et celle du suivant.
+
+    Cas #4 :
+        L'insertion se fait à la fin de l'ensemble (aucune cellule mise à part la fin).
+*/
 
 /////////////////////////////////////////////////////////////////
 // copieur et destructeur de liste
