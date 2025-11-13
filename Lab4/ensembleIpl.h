@@ -33,7 +33,7 @@ ensemble<TYPEContenu>::ensemble(const ensemble<TYPEContenu>& src)
 {
     for(iterateur it = src.begin(); it != src.end(); it++)
     {
-        ajoute(*it);
+        ajoute(*it.m_pointeur->m_contenu);
     }
 }
 
