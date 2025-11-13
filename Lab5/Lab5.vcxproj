@@ -130,9 +130,9 @@
     <ClCompile Include="Lab5.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\Downloads\code base EP5\code base EP5\fctIpl.h" />
-    <ClInclude Include="..\..\..\Downloads\code base EP5\code base EP5\fonction.h" />
-    <ClInclude Include="..\..\..\Downloads\code base EP5\code base EP5\iterateurs.h" />
+    <ClInclude Include=".\fctIpl.h" />
+    <ClInclude Include=".\fonction.h" />
+    <ClInclude Include=".\iterateurs.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
